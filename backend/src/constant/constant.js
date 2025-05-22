@@ -1,0 +1,2 @@
+
+export const USER_MODEL = "users";
