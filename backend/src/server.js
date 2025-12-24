@@ -1,7 +1,8 @@
 import app from "./app.js";
-import { connectDB } from './database/dbConnection.js';
+import { connectDB } from './database/DBConnection.js';
+import { Constant } from "./utils/Constant.js";
 
-const PORT = process.env.PORT || 5000;
+const PORT = Constant.PORT;
 try {
   await connectDB();
   app.listen(PORT, () => {

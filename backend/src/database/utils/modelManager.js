@@ -1,5 +1,5 @@
-import { pool } from "../dbConnection.js";
-import * as crud from "./dbMethods.js"
+import { pool } from "../DBConnection.js";
+import * as crud from "./DBMethods.js"
 
 
 export const ModelManager = {
@@ -10,11 +10,23 @@ export const ModelManager = {
     });
 
     return {
-      find: (filters = {}) => crud.find(tableName, filters),
-      findOne: (filters = {}) => crud.findOne(tableName, filters),
+      // CREATE
       create: (data) => crud.create(tableName, data),
-      update: (filters, data) => crud.update(tableName, filters, data),
-      delete: (filters) => crud.remove(tableName, filters)
+
+      // READ
+      find: (filters = {}) => crud.find(tableName, filters),
+      findAll: () => crud.findAll(tableName),
+      findOne: (filters = {}) => crud.findOne(tableName, filters),
+      findById: (id) => crud.findById(tableName, id),
+      existsById: (id) => crud.existsById(tableName, id),
+
+      // UPDATE
+      updateOne: (filters, data) => crud.updateOne(tableName, filters, data),
+      findByIdAndUpdate: (id, data) => crud.findByIdAndUpdate(tableName, id, data),
+
+      // DELETE
+      deleteOne: (filters) => crud.deleteOne(tableName, filters),
+      findByIdAndDelete: (id) => crud.findByIdAndDelete(tableName, id),
     };
   }
 };
